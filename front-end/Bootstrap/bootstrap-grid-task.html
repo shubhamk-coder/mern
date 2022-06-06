@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color: grey">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap grid task</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body style="background-color: grey">
+    <div class="container">
+      <div class="row">
+        <div class="col-2 offset-5">
+          <h1
+            style="
+              font-size: 45px;
+              text-align: center;
+              color: aliceblue;
+              padding: 10px;
+            "
+          >
+            Header
+          </h1>
+        </div>
+      </div>
+      <header style="margin-bottom: 10px">
+        <nav>
+          <div
+            class="row"
+            style="
+              background-color: #ed5edd;
+              padding: 0px 10px;
+              padding-top: 10px;
+              text-align: center;
+            "
+          >
+            <div class="col-2"><p>HOME</p></div>
+            <div class="col-2"><p>OUR TEAM</p></div>
+            <div class="col-2"><p>PROJECTS</p></div>
+            <div class="col-2"><p>CONTACT</p></div>
+            <div class="col-4" style="align-items: center">
+              <form>
+                <label for="search"></label>
+                <input
+                  type="text"
+                  id="search"
+                  name="search"
+                  size="26"
+                  placeholder="Search query"
+                />
+                <input
+                  type="submit"
+                  id="submit"
+                  name="submit"
+                  value="Go!"
+                  style="background-color: black; color: white; width: 60px"
+                />
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="row">
+        <div class="col-9" style="background-color: white; margin-bottom: 10px">
+          <main>
+            <article>
+              <header name="ArticleHeading">
+                <h1 style="text-align: center; padding: 10px">
+                  Article heading
+                </h1>
+              </header>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+              <section name="subsection1">
+                <h3>subsection</h3>
+                <p>
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+                  Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur.
+                </p>
+                <p>
+                  laboris nisi ut aliquip ex ea commodo consequat.Excepteur sint
+                  occaecat cupidatat non proident, sunt in culpa qui officia
+                  deserunt mollit anim id est laborum.
+                </p>
+              </section>
+              <section name="subsection2">
+                <h3>Another subsection</h3>
+                <p>
+                  Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                  occaecat cupidatat non proident, sunt in culpa qui officia
+                  deserunt mollit anim id est laborum.
+                </p>
+                <p>
+                  Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                  qui officia deserunt mollit anim id est laborum. Excepteur
+                  sint occaecat cupidatat non proident, sunt in culpa qui
+                  officia deserunt mollit anim id est laborum.
+                </p>
+              </section>
+            </article>
+          </main>
+        </div>
+        <div
+          class="col-3"
+          style="background-color: #ed5edd; margin-bottom: 10px"
+        >
+          <aside name="rightsidebar">
+            <h1 style="text-align: center">Related</h1>
+            <ul>
+              <li>
+                <a href="#">Oh I do like to be beside the seaside</a>
+              </li>
+              <li>
+                <a href="#">Oh I do like to be beside the sea</a>
+              </li>
+              <li>
+                <a href="#">Although in the North of England</a>
+              </li>
+              <li>
+                <a href="#">It never stops raining</a>
+              </li>
+              <li>
+                <a href="#">Oh well...</a>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+      <div class="row" style="background-color: white; padding: 20px 10px">
+        <div class="col">
+          <footer>
+            &copy;Copyright 2050 by shubham kamble. All rights reserved
+          </footer>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
