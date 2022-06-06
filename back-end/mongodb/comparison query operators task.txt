@@ -1,0 +1,56 @@
+1. $eq : Specifies equality condition. The $eq operator matches documents where the value of a field equals the specified value.
+         Syntax : { <field>: { $eq: <value> } } 
+
+   -> db.products.find({"spec.ram" : { $eq : 4 }})
+
+2. $in : The $in operator selects the documents where the value of a field equals any value in the specified array. To specify an $in expression, use the following prototype:
+         Syntax : { field: { $in: [<value1>, <value2>, ... <valueN> ] } }
+
+   -> db.products.find({color : { $in : "black" }})
+
+3. $lt : $lt selects the documents where the value of the field is less than (i.e. <) the specified value.
+	 Syntax : { field: { $lt: value } } 
+
+   -> db.products.find({"spec.screen" : { $lt : 7 }})
+
+4. $lt : $lt selects the documents where the value of the field is less than (i.e. <) the specified value.
+	 Syntax : { field: { $lt: value } } 
+
+   -> db.products.find({storage : { $lt : 128 }})
+
+5. $lte : $lte selects the documents where the value of the field is less than or equal to (i.e. <=) the specified value.
+	 Syntax : { field: { $lte: value } } 
+
+   -> db.products.find({"spec.screen" : { $lte : 6.5 }})
+
+6. $lte : $lte selects the documents where the value of the field is less than or equal to (i.e. <=) the specified value.
+	 Syntax : { field: { $lte: value } } 
+
+   -> db.products.find({releaseDate: { $lte : new Date('2015-01-11')}})
+
+7. $ne : $ne selects the documents where the value of the field is not equal to the specified value. This includes documents that do not contain the field.
+	 Syntax : { field: { $ne: value } }
+
+   -> db.products.find({"spec.screen" : { $ne : 9.7 }})
+
+8. $eq : Specifies equality condition. The $eq operator matches documents where the value of a field equals the specified value.
+         Syntax : { <field>: { $eq: <value> } }
+	 If <value> is a regular expression, the statement is expanded using the $regex operator { field: { $regex: <value> } }.
+
+   -> db.products.find({color : { $regex : [ /^g+/, /^w+/ ] }})
+
+9. $nin : $nin selects the documents where:
+		- the field value is not in the specified array or
+		- the field does not exist.
+	  If the field holds an array, then the $nin operator selects the documents whose field holds an array with no element equal to a value in the specified array (for example, <value1>, <value2>, and so on).
+	  Syntax: { field: { $nin: [ <value1>, <value2> ... <valueN> ] } }
+
+   -> db.products.find({color : { $nin : [ "black", "white" ] }})
+
+Remaining :-
+
+10. $gt : $gt selects the documents where the value of the field is greater than (i.e. >) the specified value.
+	 Syntax : { field: { $gt: value } } 
+
+11. $gte : $gte selects the documents where the value of the field is greater than or equal to (i.e. >=) the specified value.
+	 Syntax : { field: { $gte: value } } 
