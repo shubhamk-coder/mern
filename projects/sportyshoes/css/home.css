@@ -16,3 +16,7 @@ a:hover {
 a:active { 
     text-decoration: none; 
 }
+
+/* nav {
+    background: -webkit-linear-gradient(left,#ff5f6d,#ffc371);
+} */
