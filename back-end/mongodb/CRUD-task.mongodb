@@ -308,3 +308,234 @@ synopsis: "Bilbo and Company are forced to engage in a war against an array of c
         "synopsis" : "A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home - and the gold within it - from the dragon Smaug."
 }
 
+## Delete Documents
+> db.movies.deleteOne({"title":"Pee Wee Herman's Big Adventure"});
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.movies.deleteOne({"title":"Avatar"});
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.movies.find({},{_id:0,title:1}).pretty();
+{ "title" : "Fight Club" }
+{ "title" : "Pulp Fiction" }
+{ "title" : "Inglorius Basterds" }
+{ "title" : "The Hobbit: An Unexpected Journey" }
+{ "title" : "The Hobbit: The Desolation of smug" }
+{ "title" : "The Hobbit: The Battle of the Five Armies" }
+
+## Relationships
+### Insert the following documents into a users collection
+> db.users.insertMany([{"username":"GoodGuyGreg","first_name":"Good Guy", "last_name" : "Greg"},{ "username" : "ScumbagSteve", "full_name" :   {"first" : "Scumbag"  , "last" : "Steve"}}]);
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("62b2127458e2771bd28580eb"),
+                ObjectId("62b2127458e2771bd28580ec")
+        ]
+}
+
+### Insert the following documents into a posts collection
+> db.posts.insertMany([{"username":"GoodGuyGreg","title" :" Passes out at party", "body" :" Wakes up early and cleans house"},{"username":"GoodGuyGreg","title" :"Steals your identity", "body" :"Raises your credit score"},{"username":"GoodGuyGreg","title" :" Reports a bug in your code", "body" :" Sends you a Pull Request"},{"username":"ScumbagSteve","title" :" Borrows something", "body" :"Sells it"},{"username":"ScumbagSteve","title" :"Borrows everything", "body" :"The end"},{"username":"ScumbagSteve","title" :"Forks your repo on github", "body" :"Sets to private"}]);
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("62b2131f58e2771bd28580ed"),
+                ObjectId("62b2131f58e2771bd28580ee"),
+                ObjectId("62b2131f58e2771bd28580ef"),
+                ObjectId("62b2131f58e2771bd28580f0"),
+                ObjectId("62b2131f58e2771bd28580f1"),
+                ObjectId("62b2131f58e2771bd28580f2")
+        ]
+}
+
+### Insert the following documents into a comments collection
+> db.comments.insertMany([
+... {
+... username: "GoodGuyGreg",
+... comment: "Hope you got a good deal!",
+... post: ObjectId("62b2131f58e2771bd28580f0")
+... },
+... {
+... username: "GoodGuyGreg",
+... comment: "Don't violate the licensing agreement!",
+... post: ObjectId("62b2131f58e2771bd28580f1")
+... },
+... {
+... username: "GoodGuyGreg",
+... comment: "Don't violate the licensing agreement!",
+... post: ObjectId("62b2131f58e2771bd28580f2")
+... },
+... {
+... username: "ScumbagSteve",
+... comment: "It still isn't clean",
+... post: ObjectId("62b2131f58e2771bd28580ed")
+... },
+... {
+... username: "ScumbagSteve",
+... comment: "Denied your PR cause I found a hack",
+... post: ObjectId("62b2131f58e2771bd28580ef")
+... }
+... ]);
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("62b2164158e2771bd28580f3"),
+                ObjectId("62b2164158e2771bd28580f4"),
+                ObjectId("62b2164158e2771bd28580f5"),
+                ObjectId("62b2164158e2771bd28580f6"),
+                ObjectId("62b2164158e2771bd28580f7")
+        ]
+}
+
+## Querying related collections
+> db.users.find().pretty();
+{
+        "_id" : ObjectId("62b2127458e2771bd28580eb"),
+        "username" : "GoodGuyGreg",
+        "first_name" : "Good Guy",
+        "last_name" : "Greg"
+}
+{
+        "_id" : ObjectId("62b2127458e2771bd28580ec"),
+        "username" : "ScumbagSteve",
+        "full_name" : {
+                "first" : "Scumbag",
+                "last" : "Steve"
+        }
+}
+> db.posts.find().pretty();
+{
+        "_id" : ObjectId("62b2131f58e2771bd28580ed"),
+        "username" : "GoodGuyGreg",
+        "title" : " Passes out at party",
+        "body" : " Wakes up early and cleans house"
+}
+{
+        "_id" : ObjectId("62b2131f58e2771bd28580ee"),
+        "username" : "GoodGuyGreg",
+        "title" : "Steals your identity",
+        "body" : "Raises your credit score"
+}
+{
+        "_id" : ObjectId("62b2131f58e2771bd28580ef"),
+        "username" : "GoodGuyGreg",
+        "title" : " Reports a bug in your code",
+        "body" : " Sends you a Pull Request"
+}
+{
+        "_id" : ObjectId("62b2131f58e2771bd28580f0"),
+        "username" : "ScumbagSteve",
+        "title" : " Borrows something",
+        "body" : "Sells it"
+}
+{
+        "_id" : ObjectId("62b2131f58e2771bd28580f1"),
+        "username" : "ScumbagSteve",
+        "title" : "Borrows everything",
+        "body" : "The end"
+}
+{
+        "_id" : ObjectId("62b2131f58e2771bd28580f2"),
+        "username" : "ScumbagSteve",
+        "title" : "Forks your repo on github",
+        "body" : "Sets to private"
+}
+> db.posts.find({ username: 'GoodGuyGreg' }).pretty();
+{
+        "_id" : ObjectId("62b2131f58e2771bd28580ed"),
+        "username" : "GoodGuyGreg",
+        "title" : " Passes out at party",
+        "body" : " Wakes up early and cleans house"
+}
+{
+        "_id" : ObjectId("62b2131f58e2771bd28580ee"),
+        "username" : "GoodGuyGreg",
+        "title" : "Steals your identity",
+        "body" : "Raises your credit score"
+}
+{
+        "_id" : ObjectId("62b2131f58e2771bd28580ef"),
+        "username" : "GoodGuyGreg",
+        "title" : " Reports a bug in your code",
+        "body" : " Sends you a Pull Request"
+}
+> db.posts.find({ username: 'ScumbagSteve' }).pretty();
+{
+        "_id" : ObjectId("62b2131f58e2771bd28580f0"),
+        "username" : "ScumbagSteve",
+        "title" : " Borrows something",
+        "body" : "Sells it"
+}
+{
+        "_id" : ObjectId("62b2131f58e2771bd28580f1"),
+        "username" : "ScumbagSteve",
+        "title" : "Borrows everything",
+        "body" : "The end"
+}
+{
+        "_id" : ObjectId("62b2131f58e2771bd28580f2"),
+        "username" : "ScumbagSteve",
+        "title" : "Forks your repo on github",
+        "body" : "Sets to private"
+}
+> db.comments.find().pretty();
+{
+        "_id" : ObjectId("62b2164158e2771bd28580f3"),
+        "username" : "GoodGuyGreg",
+        "comment" : "Hope you got a good deal!",
+        "post" : ObjectId("62b2131f58e2771bd28580f0")
+}
+{
+        "_id" : ObjectId("62b2164158e2771bd28580f4"),
+        "username" : "GoodGuyGreg",
+        "comment" : "Don't violate the licensing agreement!",
+        "post" : ObjectId("62b2131f58e2771bd28580f1")
+}
+{
+        "_id" : ObjectId("62b2164158e2771bd28580f5"),
+        "username" : "GoodGuyGreg",
+        "comment" : "Don't violate the licensing agreement!",
+        "post" : ObjectId("62b2131f58e2771bd28580f2")
+}
+{
+        "_id" : ObjectId("62b2164158e2771bd28580f6"),
+        "username" : "ScumbagSteve",
+        "comment" : "It still isn't clean",
+        "post" : ObjectId("62b2131f58e2771bd28580ed")
+}
+{
+        "_id" : ObjectId("62b2164158e2771bd28580f7"),
+        "username" : "ScumbagSteve",
+        "comment" : "Denied your PR cause I found a hack",
+        "post" : ObjectId("62b2131f58e2771bd28580ef")
+}
+> db.comments.find({ username: 'GoodGuyGreg' }).pretty();
+{
+        "_id" : ObjectId("62b2164158e2771bd28580f3"),
+        "username" : "GoodGuyGreg",
+        "comment" : "Hope you got a good deal!",
+        "post" : ObjectId("62b2131f58e2771bd28580f0")
+}
+{
+        "_id" : ObjectId("62b2164158e2771bd28580f4"),
+        "username" : "GoodGuyGreg",
+        "comment" : "Don't violate the licensing agreement!",
+        "post" : ObjectId("62b2131f58e2771bd28580f1")
+}
+{
+        "_id" : ObjectId("62b2164158e2771bd28580f5"),
+        "username" : "GoodGuyGreg",
+        "comment" : "Don't violate the licensing agreement!",
+        "post" : ObjectId("62b2131f58e2771bd28580f2")
+}
+> db.comments.find({ username: 'ScumbagSteve' }).pretty();
+{
+        "_id" : ObjectId("62b2164158e2771bd28580f6"),
+        "username" : "ScumbagSteve",
+        "comment" : "It still isn't clean",
+        "post" : ObjectId("62b2131f58e2771bd28580ed")
+}
+{
+        "_id" : ObjectId("62b2164158e2771bd28580f7"),
+        "username" : "ScumbagSteve",
+        "comment" : "Denied your PR cause I found a hack",
+        "post" : ObjectId("62b2131f58e2771bd28580ef")
+}
