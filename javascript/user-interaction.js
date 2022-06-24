@@ -11,12 +11,26 @@ if (isOpted) {
 let num1 = parseInt(prompt('Enter your number-1'));
 let num2 = parseInt(prompt('Enter your number-2'));
 alert(num1 + " is of type " + typeof num1 + " & " + num2 + " is of type " + typeof num2);
-if(isNaN(num1) || isNaN(num2)){
+if (isNaN(num1) || isNaN(num2)) {
   alert("Can not add incompatible types");
-}else{
+} else {
   let sum = num1+num2;
   alert("Sum is "+sum);
 }
+
+/* let num1 = parseInt(prompt('Enter your number-1'));
+let num2 = parseInt(prompt('Enter your number-2'));
+if (isNaN(num1)) {
+  alert(num1 + " is of type NaN")
+} else {
+  alert(num1 + " is of type Number")
+}  
+if (isNaN(num2)) {
+  alert(num2 + " is of type NaN")
+} else {
+  alert(num2 + " is of type Number")
+} */
+
 /* if(Number.isInteger(num1) && Number.isInteger(num2)){
     let sum = num1+num2;
     alert("Sum is "+sum);
