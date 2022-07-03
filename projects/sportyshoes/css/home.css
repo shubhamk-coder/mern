@@ -19,4 +19,6 @@ a:active {
 
 /* nav {
     background: -webkit-linear-gradient(left,#ff5f6d,#ffc371);
+    background: rgb(27,131,184);
+    background: linear-gradient(90deg, rgba(27,131,184,1) 46%, rgba(0,212,255,1) 100%);
 } */
