@@ -3,7 +3,7 @@
 let basePrice = 30;
 let price;
 if (age >= 65) {
-    price = basePrice - basePrice * .50;
+    price = basePrice - basePrice * .5;
     alert(`your ticket price is $ ${price}`);
 } else {
     alert(`your ticket price is $ ${basePrice}`);
