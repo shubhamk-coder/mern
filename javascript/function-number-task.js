@@ -5,7 +5,7 @@ function armstrong (num) {
     let temp = num;
     while (temp > 0) {
     let remainder = temp % 10;
-    sum += remainder * remainder * remainder;
+    sum += Math.pow(remainder, 3);
     temp = parseInt(temp / 10);
 }
 }
