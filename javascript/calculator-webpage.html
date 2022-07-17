@@ -90,29 +90,44 @@
         let choice = null;
         switch (operation) {
           case "+":
-            result = num1 + num2;
+            let addition = (function (a, b) {
+              return a + b;
+            })(num1, num2);
+            // result = num1 + num2;
             document.getElementById("result").innerText =
-              num1 + " + " + num2 + " = " + result;
+              num1 + " + " + num2 + " = " + addition;
             break;
           case "-":
-            result = num1 - num2;
+            let subtraction = (function (a, b) {
+              return a - b;
+            })(num1, num2);
+            // result = num1 - num2;
             document.getElementById("result").innerText =
-              num1 + " - " + num2 + " = " + result;
+              num1 + " - " + num2 + " = " + subtraction;
             break;
           case "*":
-            result = num1 * num2;
+            let multiplication = (function (a, b) {
+              return a * b;
+            })(num1, num2);
+            // result = num1 * num2;
             document.getElementById("result").innerText =
-              num1 + " * " + num2 + " = " + result;
+              num1 + " * " + num2 + " = " + multiplication;
             break;
           case "/":
-            result = num1 / num2;
+            let division = (function (a, b) {
+              return a / b;
+            })(num1, num2);
+            // result = num1 / num2;
             document.getElementById("result").innerText =
-              num1 + " / " + num2 + " = " + result;
+              num1 + " / " + num2 + " = " + division;
             break;
           case "%":
-            result = num1 % num2;
+            let modulo = (function (a, b) {
+              return a % b;
+            })(num1, num2);
+            // result = num1 % num2;
             document.getElementById("result").innerText =
-              num1 + " % " + num2 + " = " + result;
+              num1 + " % " + num2 + " = " + modulo;
             break;
           default:
             alert("Invalid choice!");
