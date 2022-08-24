@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        .emp {
+            background-color: aqua;
+        }
+    </style>
+    <title>AJAX Demo with JSON Server</title>
+  </head>
+  <body>
+    <label for="id">Employee Id:</label>
+        <input type="text" class="emp" id="id" name="id" />
+        <input type="submit" value="Show Employee Details" />
+    </form>
+<!-- <button id="ajaxButton1" type="button">Show Employee Details</button> -->
+    <div id="ajaxResponseContent"></div>
+
+    <script>
+      (function () {
+        let httpRequest;
+        document
+          .getElementById("ajaxButton1")
+          .addEventListener("click", makeRequest);
+
+        function makeRequest() {
+          httpRequest = new XMLHttpRequest();
+
+          if (!httpRequest) {
+            alert("Giving up :( Cannot create an XMLHTTP instance");
+            return false;
+          }
+          httpRequest.onreadystatechange = displayEmployees;
+          httpRequest.open("GET", "http://localhost:3011/employees");
+          httpRequest.send();
+        }
+
+        function displayEmployees() {
+          try {
+            if (httpRequest.readyState === XMLHttpRequest.DONE) {
+              if (httpRequest.status === 200) {
+                console.log(httpRequest.responseText);
+                document.getElementById("ajaxResponseContent").innerText =
+                  httpRequest.responseText;
+                document.getElementById("id").innerText =
+                  httpRequest.responseText;
+
+                let employees = JSON.parse(httpRequest.responseText);
+                console.log(employees);
+              } else {
+                console.error("There was a problem with the request.");
+                alert("There was a problem with the request.");
+              }
+            }
+          } catch (e) {
+            console.error(e);
+            alert("Caught Exception: " + e.description);
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
