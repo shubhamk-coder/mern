@@ -1,0 +1,78 @@
+.card {
+    padding: 15px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    background-color: #eff2f8cb;
+  }
+
+  .text-underline {
+    text-decoration: underline;
+  }
+
+  .header > h2 {
+    color: blue;
+    text-align: center;
+  }
+
+  .form-group {
+    background-color: #fff;
+  }
+
+  .btn-primary {
+    color: #fff;
+    background-color: blue;
+  }
+
+  .input-group {
+    background-color: #fff;
+    box-shadow: 2px 2px 2px 2px #888888;
+  }
+
+  .input {
+    border: none;
+  }
+
+  .fa-calendar {
+    margin-top: 10px;
+    margin-right: 8px;
+  }
+
+  select {
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  .fa, .fas {
+    color: blue;
+  }
+
+  .green {
+    color: green;
+  }
+
+  .far {
+    color: orange;
+  }
+
+  .date-btn {
+    border: 2px solid orange !important;
+    padding: 10px;
+    font-weight: none;
+    border-radius: 5px;
+  }
+  .sand-clock {
+    width: 20px;
+  }
+
+  .option {
+    width: 140px;
+    height: 30px;
+    font-size: small;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .img {
+    height: 20px;
+    width: 20px;
+    color: blue;
+  }
